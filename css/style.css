@@ -1,5 +1,5 @@
 /* ============================================================
-   🍌 CAMBUR PINTÓN - ESTILOS PRINCIPALES
+   🍌 CAMBUR PINTÓN - ESTILOS PRINCIPALES (v2.0)
    ============================================================ */
 
 :root {
@@ -31,6 +31,30 @@ body {
 }
 
 /* ============================================================
+   ACCESIBILIDAD: REDUCIR MOVIMIENTO
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ============================================================
+   ACCESIBILIDAD: FOCO VISIBLE
+   ============================================================ */
+:focus {
+    outline: none;
+}
+:focus-visible {
+    outline: 3px solid rgba(124, 179, 66, 0.85);
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+/* ============================================================
    BARRA SUPERIOR UNIFICADA
    ============================================================ */
 .top-bar {
@@ -38,6 +62,7 @@ body {
     top: 0; left: 0; right: 0;
     height: 46px;
     background: rgba(13, 40, 24, 0.95);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(124, 179, 66, 0.3);
     display: flex;
@@ -285,6 +310,14 @@ body {
     cursor: pointer;
     border: 2px solid var(--cambur-yellow);
 }
+.dj-vol-slider::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    background: var(--cambur-green);
+    border-radius: 50%;
+    border: 2px solid var(--cambur-yellow);
+    cursor: pointer;
+}
 
 /* EN VIVO */
 .dj-live { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
@@ -323,7 +356,17 @@ body {
 .history-timeline { position: relative; padding-left: 30px; }
 .history-timeline::before { content: ''; position: absolute; left: 10px; top: 0; bottom: 0; width: 3px; background: var(--cambur-green); opacity: 0.3; border-radius: 2px; }
 .history-item-mini { position: relative; margin-bottom: 18px; padding-left: 10px; }
-.history-item-mini::before { content: ''; position: absolute; left: -24px; top: 6px; width: 10px; height: 10px; background: var(--cambur-green); border-radius: 50%; border: 2px solid var(--cambur-yellow); }
+.history-item-mini::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    background: var(--cambur-green);
+    border-radius: 50%;
+    border: 2px solid var(--cambur-yellow);
+}
 .history-item-mini:first-child::before { background: var(--cambur-yellow); box-shadow: 0 0 8px var(--cambur-yellow); }
 .history-song-mini { font-size: 13px; font-weight: 700; color: #FFFFFF; margin-bottom: 2px; }
 .history-artist-mini { font-size: 11px; color: var(--text-secondary); margin-bottom: 2px; }
