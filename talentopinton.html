@@ -1,1 +1,211 @@
-html
+<!DOCTYPE html>
+<html lang="es-VE">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0D2818">
+    <meta name="description" content="Talento Pintón - Descubre los talentos de Cambur Pintón, la radio más chevere de Venezuela.">
+    <meta property="og:title" content="Talento Pintón - Cambur Pintón">
+    <meta property="og:description" content="Conoce a los talentos que hacen vida en la radio más chevere de Venezuela.">
+    <meta property="og:image" content="https://radio.camburpinton.com.ve/static/uploads/background.1778449035.png">
+    <link rel="icon" type="image/png" href="https://radio.camburpinton.com.ve/static/uploads/background.1778449035.png">
+    
+    <title>🌟 Talento Pintón - Cambur Pintón</title>
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <style>
+        .talentos-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px 60px;
+        }
+        .talentos-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .talentos-header img {
+            width: 100px;
+            height: auto;
+            filter: drop-shadow(0 0 20px rgba(124, 179, 66, 0.5));
+            animation: float 3s ease-in-out infinite;
+            border-radius: 50%;
+            border: 2px solid rgba(124, 179, 66, 0.3);
+            background: rgba(13, 40, 24, 0.6);
+            padding: 8px;
+            margin-bottom: 20px;
+        }
+        .talentos-title {
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #7CB342, #558B2F, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .talentos-subtitle {
+            color: #A5D6A7;
+            font-size: 16px;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        .talentos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .talento-card {
+            background: #16213E;
+            border: 1px solid rgba(124, 179, 66, 0.2);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .talento-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            border-color: rgba(124, 179, 66, 0.5);
+        }
+        .talento-avatar {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+        .talento-nombre {
+            font-size: 20px;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 5px;
+        }
+        .talento-talento {
+            font-size: 14px;
+            color: #7CB342;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .talento-ciudad {
+            font-size: 12px;
+            color: #A5D6A7;
+            margin-bottom: 15px;
+        }
+        .talento-descripcion {
+            font-size: 13px;
+            color: #A5D6A7;
+            line-height: 1.5;
+        }
+        .talento-redes {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .talento-redes a {
+            color: #7CB342;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        .talento-redes a:hover {
+            color: #FFD700;
+        }
+        .btn-regresar {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            background: linear-gradient(135deg, #7CB342, #558B2F);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(124, 179, 66, 0.3);
+        }
+        .btn-regresar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(124, 179, 66, 0.5);
+        }
+        .btn-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .placeholder-mensaje {
+            text-align: center;
+            color: #A5D6A7;
+            font-style: italic;
+            padding: 60px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="talentos-container">
+        <div class="talentos-header">
+            <img src="https://radio.camburpinton.com.ve/static/uploads/background.1778449035.png" alt="Cambur Pintón">
+            <h1 class="talentos-title">🌟 Talento Pintón</h1>
+            <p class="talentos-subtitle">Los talentos que hacen vida en la radio más chevere de Venezuela</p>
+            <p style="color:#A5D6A7; font-size:13px;">¿Quieres aparecer aquí? <a href="/" style="color:#7CB342;">Regístrate en nuestra página principal</a></p>
+        </div>
+
+        <div class="talentos-grid" id="talentosGrid">
+            <div class="placeholder-mensaje" style="grid-column:1/-1;">
+                🍌 Próximamente verás aquí los talentos registrados...
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <a href="/" class="btn-regresar">🍌 Volver a Cambur Pintón</a>
+        </div>
+    </div>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
+    <script>
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCrlJSE9zq9_nQ35k8HYvBBMWdVKhzmQGU",
+            authDomain: "prueba-1-5301e.firebaseapp.com",
+            projectId: "prueba-1-5301e"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // Cargar talentos desde Firebase
+        async function cargarTalentos() {
+            const grid = document.getElementById('talentosGrid');
+            try {
+                const snapshot = await db.collection('talentos').orderBy('fecha', 'desc').get();
+                if (!snapshot.empty) {
+                    let html = '';
+                    snapshot.forEach(doc => {
+                        const t = doc.data();
+                        const avatar = t.talento && t.talento.toLowerCase().includes('cantante') ? '🎤' :
+                                       t.talento && t.talento.toLowerCase().includes('músico') ? '🎸' :
+                                       t.talento && t.talento.toLowerCase().includes('comedia') ? '🎭' : '🌟';
+                        html += `
+                            <div class="talento-card">
+                                <div class="talento-avatar">${avatar}</div>
+                                <div class="talento-nombre">${t.nombreArtistico || 'Anónimo'}</div>
+                                <div class="talento-talento">${t.talento || 'Talento'}</div>
+                                <div class="talento-ciudad">📍 ${t.ciudad || 'Venezuela'}</div>
+                                ${t.redes ? `<div class="talento-redes">
+                                    <a href="https://instagram.com/${t.redes.replace('@','')}" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                </div>` : ''}
+                            </div>`;
+                    });
+                    grid.innerHTML = html;
+                }
+            } catch (err) {
+                console.log('Error cargando talentos:', err);
+            }
+        }
+
+        cargarTalentos();
+    </script>
+
+</body>
+</html>
