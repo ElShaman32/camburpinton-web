@@ -1,1 +1,196 @@
-html
+<!DOCTYPE html>
+<html lang="es-VE">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0D2818">
+    <meta name="description" content="Cambur Pintón - La Radio Más Chevere de Venezuela. Con El Cuatro Bien Afinado.">
+    <meta property="og:title" content="Cambur Pintón - La Radio Más Chevere de Venezuela">
+    <meta property="og:description" content="Con El Cuatro Bien Afinado.">
+    <meta property="og:image" content="https://radio.camburpinton.com.ve/static/uploads/background.1778449035.png">
+    <meta property="og:type" content="music.radio_station">
+    <link rel="icon" type="image/png" href="https://radio.camburpinton.com.ve/static/uploads/background.1778449035.png">
+    
+    <title id="pageTitle">🍌 Cambur Pintón</title>
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR UNIFICADA -->
+    <div class="top-bar">
+        <div class="top-left">
+            <div class="social-icons">
+                <a href="https://www.instagram.com/camburpinton.fm" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@camburpintonfm" target="_blank" rel="noopener" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/share/1CsVgaN7dh/" target="_blank" rel="noopener" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://kick.com/camburpintonfm" target="_blank" rel="noopener" title="Kick"><i class="fab fa-kickstarter-k"></i></a>
+                <a href="https://www.twitch.tv/camburpintonfm" target="_blank" rel="noopener" title="Twitch"><i class="fab fa-twitch"></i></a>
+                <a href="https://youtube.com/@camburpintonfm" target="_blank" rel="noopener" title="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.threads.com/camburpinton.fm" target="_blank" rel="noopener" title="Threads"><i class="fab fa-threads"></i></a>
+                <a href="https://bsky.app/profile/camburpinton.bsky.social" target="_blank" rel="noopener" title="BlueSky"><i class="fa-solid fa-cloud"></i></a>
+            </div>
+        </div>
+        <div class="top-right">
+            <span class="top-dollar" id="topDollar">💵 Cargando...</span>
+            <div class="top-weather">
+                <span class="weather-inner" id="weatherInner">🌤️ Cargando clima...</span>
+            </div>
+            <div class="venezuela-time">
+                <span class="flag">🇻🇪</span>
+                <span class="time" id="venezuelaTime">--:-- --</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="hero-left">
+            <img src="https://radio.camburpinton.com.ve/static/uploads/background.1778449035.png" alt="Cambur Pintón" class="logo-img">
+            <h1 class="station-name">Cambur Pintón</h1>
+            <p class="tagline">🎙️ La Radio Más Chevere de Venezuela 🎙️</p>
+            <p class="hero-subtitle">🎸 Con El Cuatro Bien Afinado</p>
+            <div class="listeners-badge">👥 <span class="listeners-count" id="listenersCount">0</span> oyentes escuchando ahora</div>
+            <button class="btn-request" onclick="abrirPedirCancion()">🎶 Pon a Sonar La Tuya</button>
+        </div>
+        <div class="hero-right" id="heroRight" style="background-image: url('https://raw.githubusercontent.com/ElShaman32/Revisia_miApp/main/foto.jpg');">
+            <div class="history-overlay">
+                <div class="history-title-mini">🍌 Lo Que Ya Maduró</div>
+                <div class="history-timeline" id="historyList">
+                    <p class="history-placeholder-mini">Cargando historial...</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- BANNER PUBLICITARIO -->
+    <section class="banner-section" id="bannerSection">
+        <div class="banner-container">
+            <a id="bannerLink" href="#" target="_blank" rel="noopener"><img id="bannerImg" src="" alt="Publicidad"></a>
+        </div>
+        <div class="banner-dots" id="bannerDots"></div>
+    </section>
+
+    <!-- COMUNIDAD -->
+    <section class="community-section">
+        <h2 class="section-title">💬 ¡Únete al Racimo!</h2>
+        <p class="section-subtitle">Siempre Pintón, nunca...</p>
+        <div class="community-buttons">
+            <a href="https://chat.whatsapp.com/BxMHB4ApyLXEFFyuatqmMJ" target="_blank" rel="noopener" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> Grupo WhatsApp</a>
+            <a href="https://t.me/Camburpintonbot" target="_blank" rel="noopener" class="btn-telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
+            <a href="https://whatsapp.com/channel/0029Vb6k5tyI7BeB51lYSc1y" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-whatsapp"></i> Canal WhatsApp</a>
+        </div>
+    </section>
+
+    <!-- NOTICIAS PINTONAS -->
+    <section class="news-section">
+        <h2 class="section-title">📰 Noticias Pintonas</h2>
+        <div class="news-grid" id="newsContainer"><p class="news-placeholder">🍌 Cargando noticias pintonas...</p></div>
+        <div class="bottom-row" id="bottomRow"><p class="news-placeholder" style="grid-column:1/-1;">🍌 Cargando mensaje y talentos...</p></div>
+    </section>
+
+    <!-- BOTONES TALENTO -->
+    <div class="talento-buttons-section">
+        <button class="btn-registro" onclick="abrirRegistroTalento()">🎤 ¿Eres un talento pintón? Regístrate aquí</button>
+        <a href="talentopinton.html" class="btn-talento-pagina">🌟 Talento Pintón</a>
+    </div>
+
+    <!-- SALUDOS AL AIRE -->
+    <section class="news-section">
+        <h2 class="section-title">📬 Saludos al Aire</h2>
+        <p class="section-subtitle" style="text-align:center; color:var(--text-secondary); font-size:14px; margin-bottom:25px;">Los mensajes más cheveres de nuestro racimo</p>
+        <div class="saludos-grid" id="saludosContainer"><p class="news-placeholder">🍌 Los saludos aparecerán aquí pronto...</p></div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <strong>Leonel Sira</strong> & <strong>Yennyfer Reverol</strong>
+        <br><br>
+        <a href="privacidad.html">Política de Privacidad</a>
+    </footer>
+
+    <!-- BOTONES FLOTANTES -->
+    <a href="https://chat.whatsapp.com/BxMHB4ApyLXEFFyuatqmMJ" target="_blank" rel="noopener" class="whatsapp-float" title="Únete al Racimo"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://drive.google.com/uc?export=download&id=1f1PfjWVmni67aJ_vLmmskgzQifzh8A7_" target="_blank" rel="noopener" class="download-float" title="Descargar la App"><i class="fab fa-android"></i></a>
+
+    <!-- MODAL PEDIR CANCIÓN -->
+    <div class="modal-overlay" id="requestModal">
+        <div class="modal modal-pedir">
+            <button class="modal-close" onclick="cerrarPedirCancion()">✕</button>
+            <iframe id="requestFrame" src=""></iframe>
+        </div>
+    </div>
+
+    <!-- MODAL REGISTRO TALENTO -->
+    <div class="modal-overlay" id="talentoModal">
+        <div class="modal modal-registro">
+            <button class="modal-close" onclick="cerrarRegistroTalento()">✕</button>
+            <h3>🎤 Registro de Talento Pintón</h3>
+            <p class="sub">Llena tus datos y te contactaremos</p>
+            <form id="talentoForm" onsubmit="enviarRegistroTalento(event)">
+                <div class="form-group"><label>Nombre artístico <span class="required">*</span></label><input type="text" id="tNombreArtistico" required placeholder="Cómo te conocen..."></div>
+                <div class="form-group"><label>Nombre real <span class="required">*</span></label><input type="text" id="tNombreReal" required placeholder="Tu nombre completo"></div>
+                <div class="form-group"><label>Talento <span class="required">*</span></label><input type="text" id="tTalento" required placeholder="Cantante, músico, comediante..."></div>
+                <div class="form-group"><label>Ciudad / Estado <span class="required">*</span></label><input type="text" id="tCiudad" required placeholder="Ej: Caracas, DC"></div>
+                <div class="form-group"><label>WhatsApp <span class="required">*</span></label><input type="tel" id="tWhatsapp" required placeholder="+58 412 1234567"></div>
+                <div class="form-group"><label>Instagram / TikTok</label><input type="text" id="tRedes" placeholder="@tuusuario"></div>
+                <div class="form-group"><label>Link de video o demo</label><input type="url" id="tLink" placeholder="https://youtube.com/..."></div>
+                <button type="submit" class="btn-submit" id="btnSubmitTalento">🎤 ¡Quiero ser Talento Pintón!</button>
+                <p class="form-confirmation" id="talentoConfirmation">✅ ¡Registro exitoso! Te contactaremos pronto 🍌</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- REPRODUCTOR CAMBUR DJ FIJO -->
+    <div class="dj-player-bar" id="playerBar">
+        <div class="dj-luces" id="djLuces"></div>
+        <button class="dj-play-btn" id="playBtn" onclick="togglePlay()">▶</button>
+        <div class="dj-disco-mini" id="djDisco"></div>
+        <div class="dj-info">
+            <div class="dj-title" id="npTitle">Cambur Pintón</div>
+            <div class="dj-artist" id="npArtist">Sintonizando</div>
+        </div>
+        <div class="dj-equalizer" id="djEqualizer">
+            <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+            <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+        </div>
+        <div class="dj-volume">
+            <span class="vol-icon" onclick="ajustarVolumen(-0.1)">🔈</span>
+            <input type="range" class="dj-vol-slider" id="volumeSlider" min="0" max="100" value="80" oninput="cambiarVolumen(this.value)">
+            <span class="vol-icon" onclick="ajustarVolumen(0.1)">🔊</span>
+        </div>
+        <div class="dj-live">
+            <span class="live-dot"></span> <span id="liveText">EN VIVO</span>
+        </div>
+        <div class="dj-cambur">🍌😎</div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="js/config.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/oyentes.js"></script>
+    <script src="js/clima.js"></script>
+    <script src="js/banners.js"></script>
+    <script src="js/noticias.js"></script>
+    <script src="js/registro.js"></script>
+    <script src="js/utils.js"></script>
+    <script>
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', () => {
+            iniciarReloj();
+            iniciarEfectoTitulo();
+            cargarClima();
+            cargarBanners();
+            cargarNoticias();
+            cargarSaludos();
+            console.log('🍌 Cambur Pintón - Web lista');
+        });
+    </script>
+</body>
+</html>
