@@ -81,7 +81,7 @@ body {
 .top-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; margin-left: auto; padding-left: 10px; }
 .top-dollar { color: var(--cambur-yellow); font-weight: 700; white-space: nowrap; }
 .top-weather { color: var(--text-secondary); white-space: nowrap; overflow: hidden; max-width: 250px; }
-.weather-inner { display: inline-block; white-space: nowrap; animation: weatherScroll 40s linear infinite; padding-left: 100%; }
+.weather-inner { display: inline-block; white-space: nowrap; animation: weatherScroll 70s linear infinite; padding-left: 100%; }
 @keyframes weatherScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 .venezuela-time { display: flex; align-items: center; gap: 5px; color: var(--text-secondary); font-weight: 600; white-space: nowrap; }
 .venezuela-time .flag { font-size: 14px; }
